@@ -1,233 +1,610 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="An unofficial educational front-end clone of the Netflix landing page, built with HTML and CSS for learning purposes. Not affiliated with Netflix. No data is collected.">
-    <meta name="robots" content="noindex">
-    <title>Netflix UI Clone – Front-End Practice Project (Unofficial Demo)</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Streamly — Stories worth staying in for</title>
+  <meta name="description"
+    content="Streamly is a fictional streaming service built as an original front-end portfolio project: responsive layout, accessible components, and zero dependencies.">
+  <meta name="author" content="Abhinav Shahi">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Streamly — Stories worth staying in for">
+  <meta property="og:description"
+    content="An original, dependency-free streaming landing page. Built with semantic HTML, modern CSS and vanilla JavaScript.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" type="module" defer></script>
+  <script>
+    // Set the theme before first paint so there is no light/dark flash.
+    try {
+      const saved = localStorage.getItem('streamly-theme');
+      const theme = saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    } catch (e) { /* storage blocked — keep the dark default */ }
+  </script>
 </head>
 
 <body>
-    <div class="demo-disclaimer">
-        ⚠️ Educational front-end demo — a student-built UI clone for practising HTML &amp; CSS.
-        Not affiliated with, endorsed by, or connected to Netflix. This page does not collect, store, or transmit any
-        data — please do not enter real personal information.
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="demo-banner" role="note">
+    <strong>Portfolio demo.</strong> Streamly is a fictional product built to practise front-end craft. Nothing here is
+    for sale and no data is collected.
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Streamly home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="var(--accent)" />
+              <stop offset="1" stop-color="var(--accent-2)" />
+            </linearGradient>
+          </defs>
+          <g fill="url(#brand-grad)">
+            <rect x="13" y="30" width="7" height="14" rx="3.5" />
+            <rect x="24" y="22" width="7" height="22" rx="3.5" />
+            <rect x="35" y="14" width="7" height="30" rx="3.5" />
+            <path d="M42 30.6a1.8 1.8 0 0 1 2.7-1.56l8.1 4.7a1.8 1.8 0 0 1 0 3.12l-8.1 4.7A1.8 1.8 0 0 1 42 40V30.6Z" />
+          </g>
+        </svg>
+        <span class="brand-word">Streamly</span>
+      </a>
+
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Menu</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path class="bar bar-top" d="M4 7h16" />
+          <path class="bar bar-mid" d="M4 12h16" />
+          <path class="bar bar-bot" d="M4 17h16" />
+        </svg>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#plans">Plans</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <label class="select-wrap">
+            <span class="sr-only">Language</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="select-icon">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" />
+            </svg>
+            <select id="lang-select">
+              <option>English</option>
+              <option>हिन्दी</option>
+              <option>Español</option>
+              <option>日本語</option>
+            </select>
+          </label>
+
+          <button class="icon-btn theme-toggle" id="theme-toggle" aria-pressed="false">
+            <span class="sr-only">Toggle colour theme</span>
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="4.2" />
+              <path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.7 5.3l-1.7 1.7M7 17l-1.7 1.7M18.7 18.7 17 17M7 7 5.3 5.3" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" />
+            </svg>
+          </button>
+
+          <a class="btn btn-primary btn-sm" href="#plans">Start watching</a>
+        </div>
+      </nav>
     </div>
-    <div class="main">
-        <div class="box"></div>
-        <nav>
-            <span>
-                <img src="Assets/images/logo.svg" alt="">
-            </span>
-            <div>
-                <button class="btn">English</button>
-                <button class="btn btn-red-sm">Sing In</button>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ───────────── Hero ───────────── -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow" data-reveal>
+            <span class="pulse-dot" aria-hidden="true"></span> New season drops every Friday
+          </p>
+          <h1 class="hero-title" data-reveal>Stories worth <em>staying in</em> for.</h1>
+          <p class="hero-sub" data-reveal>
+            Thousands of films, series and documentaries. Four screens at once, downloads for the commute,
+            and absolutely no ads — on every device you already own.
+          </p>
+          <div class="hero-cta" data-reveal>
+            <a class="btn btn-primary btn-lg" href="#plans">See the plans</a>
+            <a class="btn btn-ghost btn-lg" href="#features">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="btn-icon">
+                <path d="M9 7.8a1 1 0 0 1 1.5-.87l6.3 3.7a1 1 0 0 1 0 1.73l-6.3 3.71A1 1 0 0 1 9 15.2V7.8Z" />
+              </svg>
+              Take the tour
+            </a>
+          </div>
+
+          <dl class="stat-row" data-reveal>
+            <div class="stat">
+              <dt>Titles</dt>
+              <dd><span class="count" data-count-to="8400">0</span>+</dd>
             </div>
-        </nav>
-        <div class="txt">
-            <span>Unlimited movies, TV shows and more</span>
-            <span>Watch anywhere. Cancel anytime.</span>
-            <span>Ready to watch? Enter your email to create or restart your membership.</span>
-            <div class="txt-buttons">
-                <input type="text" placeholder="Email address (demo only — not stored)" disabled>
-                <button class="btn btn-red" type="button" disabled>Get Started &gt;</button>
+            <div class="stat">
+              <dt>4K HDR</dt>
+              <dd><span class="count" data-count-to="1200">0</span>+</dd>
             </div>
+            <div class="stat">
+              <dt>Countries</dt>
+              <dd><span class="count" data-count-to="190">0</span></dd>
+            </div>
+          </dl>
         </div>
+
+        <!-- Poster wall: every tile is generated with CSS, no stock imagery. -->
+                <div class="poster-wall" aria-hidden="true">
+          <div class="poster-col">
+            <div class="poster p1"><span>Nightfall</span></div>
+            <div class="poster p2"><span>Salt &amp; Static</span></div>
+            <div class="poster p3"><span>The Long Quiet</span></div>
+            <div class="poster p4"><span>Orbit City</span></div>
+            <div class="poster p1"><span>Nightfall</span></div>
+            <div class="poster p2"><span>Salt &amp; Static</span></div>
+            <div class="poster p3"><span>The Long Quiet</span></div>
+            <div class="poster p4"><span>Orbit City</span></div>
+          </div>
+          <div class="poster-col">
+            <div class="poster p5"><span>Paper Tigers</span></div>
+            <div class="poster p6"><span>Monsoon Line</span></div>
+            <div class="poster p7"><span>Deep Field</span></div>
+            <div class="poster p8"><span>Low Tide</span></div>
+            <div class="poster p5"><span>Paper Tigers</span></div>
+            <div class="poster p6"><span>Monsoon Line</span></div>
+            <div class="poster p7"><span>Deep Field</span></div>
+            <div class="poster p8"><span>Low Tide</span></div>
+          </div>
+          <div class="poster-col">
+            <div class="poster p9"><span>Ember</span></div>
+            <div class="poster p10"><span>Glasshouse</span></div>
+            <div class="poster p11"><span>Northbound</span></div>
+            <div class="poster p12"><span>Afterglow</span></div>
+            <div class="poster p9"><span>Ember</span></div>
+            <div class="poster p10"><span>Glasshouse</span></div>
+            <div class="poster p11"><span>Northbound</span></div>
+            <div class="poster p12"><span>Afterglow</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Drama</span><span>·</span><span>Sci-Fi</span><span>·</span><span>Documentary</span><span>·</span>
+          <span>Comedy</span><span>·</span><span>Thriller</span><span>·</span><span>Anime</span><span>·</span>
+          <span>Stand-up</span><span>·</span><span>Nature</span><span>·</span>
+          <span>Drama</span><span>·</span><span>Sci-Fi</span><span>·</span><span>Documentary</span><span>·</span>
+          <span>Comedy</span><span>·</span><span>Thriller</span><span>·</span><span>Anime</span><span>·</span>
+          <span>Stand-up</span><span>·</span><span>Nature</span><span>·</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Features ───────────── -->
+    <section class="features" id="features">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Why Streamly</p>
+          <h2>Built for the way you actually watch</h2>
+        </header>
+      </div>
+
+      <div class="shell feature" data-reveal>
+        <div class="feature-copy">
+          <h3>Your TV, finally worth the wall space</h3>
+          <p>Stream in 4K HDR with Dolby Atmos on smart TVs, consoles, streaming sticks and anything with HDMI.
+            Pick up exactly where you left off, on any of them.</p>
+          <ul class="tick-list">
+            <li>4K HDR &amp; Dolby Atmos</li>
+            <li>Resume across devices</li>
+            <li>No ads, ever</li>
+          </ul>
+        </div>
+        <figure class="feature-art">
+          <svg viewBox="0 0 440 300" role="img" aria-label="Illustration of a television playing a film">
+            <defs>
+              <linearGradient id="screen1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent)" />
+                <stop offset="1" stop-color="var(--accent-2)" />
+              </linearGradient>
+            </defs>
+            <rect x="40" y="30" width="360" height="205" rx="14" class="art-frame" />
+            <rect x="52" y="42" width="336" height="181" rx="8" fill="url(#screen1)" opacity="0.9" />
+            <circle cx="220" cy="132" r="34" fill="rgba(255,255,255,.22)" />
+            <path d="M210 118.5a1.6 1.6 0 0 1 2.4-1.4l22 12.5a1.6 1.6 0 0 1 0 2.8l-22 12.5a1.6 1.6 0 0 1-2.4-1.4v-25Z" fill="#fff" />
+            <rect x="80" y="196" width="190" height="6" rx="3" fill="rgba(255,255,255,.75)" />
+            <rect x="80" y="196" width="78" height="6" rx="3" fill="#fff" />
+            <path d="M190 235h60l12 38h-84l12-38Z" class="art-frame" />
+            <rect x="150" y="271" width="140" height="11" rx="5.5" class="art-frame" />
+          </svg>
+        </figure>
+      </div>
+
+      <div class="shell feature feature-rtl" data-reveal>
+        <div class="feature-copy">
+          <h3>Download now, watch in the tunnel</h3>
+          <p>Save any title to your phone or tablet with one tap. Streamly queues downloads over Wi-Fi
+            and keeps your place offline, so the metro ride is covered.</p>
+          <ul class="tick-list">
+            <li>One-tap smart downloads</li>
+            <li>Wi-Fi-only queueing</li>
+            <li>Offline progress sync</li>
+          </ul>
+        </div>
+        <figure class="feature-art">
+          <svg viewBox="0 0 440 300" role="img" aria-label="Illustration of a phone downloading an episode">
+            <defs>
+              <linearGradient id="screen2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent-2)" />
+                <stop offset="1" stop-color="var(--accent)" />
+              </linearGradient>
+            </defs>
+            <rect x="155" y="20" width="130" height="235" rx="22" class="art-frame" />
+            <rect x="164" y="29" width="112" height="217" rx="16" fill="url(#screen2)" opacity="0.88" />
+            <rect x="203" y="36" width="34" height="5" rx="2.5" fill="rgba(0,0,0,.35)" />
+            <g class="art-card">
+              <rect x="110" y="178" width="220" height="64" rx="14" />
+            </g>
+            <rect x="124" y="192" width="36" height="36" rx="8" fill="url(#screen2)" />
+            <path d="M142 201v13m0 0-5-5m5 5 5-5" class="art-stroke-light" />
+            <rect x="172" y="196" width="104" height="8" rx="4" class="art-bar" />
+            <rect x="172" y="214" width="144" height="7" rx="3.5" class="art-bar-dim" />
+            <rect x="172" y="214" width="92" height="7" rx="3.5" fill="var(--accent-2)" />
+          </svg>
+        </figure>
+      </div>
+
+      <div class="shell feature" data-reveal>
+        <div class="feature-copy">
+          <h3>Every screen in the house, at once</h3>
+          <p>One subscription covers up to four simultaneous streams. Phone on the train, tablet in the kitchen,
+            laptop at the desk, TV in the evening — no juggling logins.</p>
+          <ul class="tick-list">
+            <li>Up to 4 streams at once</li>
+            <li>Unlimited device switching</li>
+            <li>Shared watchlists</li>
+          </ul>
+        </div>
+        <figure class="feature-art">
+          <svg viewBox="0 0 440 300" role="img" aria-label="Illustration of a laptop, tablet and phone">
+            <defs>
+              <linearGradient id="screen3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent)" />
+                <stop offset="1" stop-color="var(--accent-2)" />
+              </linearGradient>
+            </defs>
+            <rect x="60" y="58" width="230" height="146" rx="12" class="art-frame" />
+            <rect x="70" y="68" width="210" height="126" rx="6" fill="url(#screen3)" opacity="0.85" />
+            <path d="M44 204h262l14 22H30l14-22Z" class="art-frame" />
+            <rect x="300" y="96" width="92" height="128" rx="12" class="art-frame" />
+            <rect x="308" y="104" width="76" height="112" rx="6" fill="url(#screen3)" opacity="0.72" />
+            <rect x="238" y="150" width="62" height="104" rx="12" class="art-frame" />
+            <rect x="244" y="156" width="50" height="92" rx="7" fill="url(#screen3)" />
+            <circle cx="175" cy="131" r="24" fill="rgba(255,255,255,.22)" />
+            <path d="M167 120.5a1.3 1.3 0 0 1 2-1.1l16 9.4a1.3 1.3 0 0 1 0 2.2l-16 9.4a1.3 1.3 0 0 1-2-1.1v-18.8Z" fill="#fff" />
+          </svg>
+        </figure>
+      </div>
+
+      <div class="shell feature feature-rtl" data-reveal>
+        <div class="feature-copy">
+          <h3>A corner of it just for the kids</h3>
+          <p>Switch to a Kids profile and the whole library changes: age-rated rows, a simpler layout, and
+            parental controls you set once with a PIN.</p>
+          <ul class="tick-list">
+            <li>Age-appropriate rows only</li>
+            <li>PIN-locked parental controls</li>
+            <li>Five profiles per account</li>
+          </ul>
+        </div>
+        <figure class="feature-art">
+          <svg viewBox="0 0 440 300" role="img" aria-label="Illustration of viewer profiles including a kids profile">
+            <defs>
+              <linearGradient id="av1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent)" /><stop offset="1" stop-color="var(--accent-2)" />
+              </linearGradient>
+              <linearGradient id="av2" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="var(--accent-2)" /><stop offset="1" stop-color="var(--accent)" />
+              </linearGradient>
+            </defs>
+            <g class="art-card">
+              <rect x="56" y="70" width="104" height="104" rx="22" />
+              <rect x="176" y="70" width="104" height="104" rx="22" />
+              <rect x="296" y="70" width="104" height="104" rx="22" />
+            </g>
+            <circle cx="108" cy="110" r="20" fill="url(#av1)" />
+            <path d="M80 158a28 28 0 0 1 56 0Z" fill="url(#av1)" />
+            <circle cx="228" cy="110" r="20" fill="url(#av2)" />
+            <path d="M200 158a28 28 0 0 1 56 0Z" fill="url(#av2)" />
+            <circle cx="348" cy="110" r="20" fill="url(#av1)" opacity=".75" />
+            <path d="M320 158a28 28 0 0 1 56 0Z" fill="url(#av1)" opacity=".75" />
+            <rect x="60" y="190" width="96" height="9" rx="4.5" class="art-bar-dim" />
+            <rect x="180" y="190" width="96" height="9" rx="4.5" class="art-bar-dim" />
+            <rect x="300" y="190" width="96" height="9" rx="4.5" fill="var(--accent-2)" />
+            <g class="art-card"><rect x="292" y="212" width="112" height="30" rx="15" /></g>
+            <text x="348" y="232" text-anchor="middle" class="art-text">KIDS</text>
+          </svg>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ───────────── Plans ───────────── -->
+    <section class="plans" id="plans">
+      <div class="shell">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Plans</p>
+          <h2>Pick a plan, change it whenever</h2>
+          <p class="section-sub">No contract, no cancellation fee. Switch tier or leave from the account page in
+            two clicks.</p>
+        </header>
+
+        <div class="billing-toggle" data-reveal>
+          <span id="bill-month" class="billing-label is-active">Monthly</span>
+          <button class="switch" id="billing-switch" role="switch" aria-checked="false"
+            aria-labelledby="bill-month bill-year">
+            <span class="sr-only">Bill annually and save 20%</span>
+            <span class="switch-knob" aria-hidden="true"></span>
+          </button>
+          <span id="bill-year" class="billing-label">Annually <span class="save-pill">Save 20%</span></span>
+        </div>
+
+        <div class="plan-grid">
+          <article class="plan-card" data-reveal>
+            <h3>Mobile</h3>
+            <p class="plan-blurb">For one phone or tablet, on the go.</p>
+            <p class="price"><span class="cur">₹</span><span class="amount" data-month="149" data-year="119">149</span><span class="per">/mo</span></p>
+            <ul class="tick-list">
+              <li>1 screen at a time</li>
+              <li>720p HD</li>
+              <li>Phone &amp; tablet</li>
+              <li>Downloads included</li>
+            </ul>
+            <button class="btn btn-ghost btn-block" data-demo-action>Choose Mobile</button>
+          </article>
+
+          <article class="plan-card is-featured" data-reveal>
+            <p class="plan-flag">Most popular</p>
+            <h3>Standard</h3>
+            <p class="plan-blurb">The everyday pick for a household of two.</p>
+            <p class="price"><span class="cur">₹</span><span class="amount" data-month="499" data-year="399">499</span><span class="per">/mo</span></p>
+            <ul class="tick-list">
+              <li>2 screens at a time</li>
+              <li>Full 1080p HD</li>
+              <li>Every device</li>
+              <li>5 profiles</li>
+            </ul>
+            <button class="btn btn-primary btn-block" data-demo-action>Choose Standard</button>
+          </article>
+
+          <article class="plan-card" data-reveal>
+            <h3>Premium</h3>
+            <p class="plan-blurb">Four screens, the best picture we have.</p>
+            <p class="price"><span class="cur">₹</span><span class="amount" data-month="749" data-year="599">749</span><span class="per">/mo</span></p>
+            <ul class="tick-list">
+              <li>4 screens at a time</li>
+              <li>4K HDR + Dolby Atmos</li>
+              <li>Every device</li>
+              <li>Spatial audio</li>
+            </ul>
+            <button class="btn btn-ghost btn-block" data-demo-action>Choose Premium</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── FAQ ───────────── -->
+    <section class="faq" id="faq">
+      <div class="shell shell-narrow">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">FAQ</p>
+          <h2>Frequently asked questions</h2>
+        </header>
+
+        <div class="accordion" id="accordion">
+          <div class="acc-item" data-reveal>
+            <h3>
+              <button class="acc-trigger" aria-expanded="false" aria-controls="acc-p-1" id="acc-t-1">
+                <span>What is Streamly?</span>
+                <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 5v14" class="acc-icon-v" />
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-p-1" role="region" aria-labelledby="acc-t-1" hidden>
+              <div class="acc-panel-inner">
+                <p>Streamly is a fictional streaming service invented for this project. The site is a front-end
+                  portfolio piece — hand-written HTML, CSS and JavaScript with no frameworks and no build step —
+                  used to practise responsive layout, design tokens and accessible components.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item" data-reveal>
+            <h3>
+              <button class="acc-trigger" aria-expanded="false" aria-controls="acc-p-2" id="acc-t-2">
+                <span>How much does Streamly cost?</span>
+                <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 5v14" class="acc-icon-v" />
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-p-2" role="region" aria-labelledby="acc-t-2" hidden>
+              <div class="acc-panel-inner">
+                <p>It doesn't — the prices in the plans section are invented to demonstrate a pricing table with a
+                  monthly/annual toggle. Nothing on this page accepts payment or takes any input.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item" data-reveal>
+            <h3>
+              <button class="acc-trigger" aria-expanded="false" aria-controls="acc-p-3" id="acc-t-3">
+                <span>How was this site built?</span>
+                <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 5v14" class="acc-icon-v" />
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-p-3" role="region" aria-labelledby="acc-t-3" hidden>
+              <div class="acc-panel-inner">
+                <p>Semantic HTML, a CSS custom-property design system with fluid <code>clamp()</code> typography and
+                  CSS Grid, and a single ES module for behaviour. Every illustration is inline SVG and every poster
+                  tile is a CSS gradient, so the whole page ships without a single raster image.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item" data-reveal>
+            <h3>
+              <button class="acc-trigger" aria-expanded="false" aria-controls="acc-p-4" id="acc-t-4">
+                <span>How do I cancel?</span>
+                <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 5v14" class="acc-icon-v" />
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-p-4" role="region" aria-labelledby="acc-t-4" hidden>
+              <div class="acc-panel-inner">
+                <p>In the fiction: two clicks from the account page, no fee, access runs to the end of the billing
+                  period. In reality there is nothing to cancel — closing the tab covers it.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item" data-reveal>
+            <h3>
+              <button class="acc-trigger" aria-expanded="false" aria-controls="acc-p-5" id="acc-t-5">
+                <span>Is it accessible?</span>
+                <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 5v14" class="acc-icon-v" />
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-p-5" role="region" aria-labelledby="acc-t-5" hidden>
+              <div class="acc-panel-inner">
+                <p>That was the goal. Landmark regions, a skip link, keyboard-operable menu and accordion with correct
+                  <code>aria-expanded</code> state, visible focus rings, a light and a dark theme that both meet WCAG
+                  AA contrast, and every animation disabled under <code>prefers-reduced-motion</code>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item" data-reveal>
+            <h3>
+              <button class="acc-trigger" aria-expanded="false" aria-controls="acc-p-6" id="acc-t-6">
+                <span>Can I use the code?</span>
+                <svg class="acc-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 5v14" class="acc-icon-v" />
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-p-6" role="region" aria-labelledby="acc-t-6" hidden>
+              <div class="acc-panel-inner">
+                <p>Yes — it's MIT licensed. Clone the repository, open <code>index.html</code>, and change the tokens
+                  at the top of <code>style.css</code> to re-skin the whole page.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Closing CTA ───────────── -->
+    <section class="cta-band">
+      <div class="shell cta-inner" data-reveal>
+        <h2>Ready when you are</h2>
+        <p>Browse the plans, poke at the accordion, flip the theme. Then go read the source — it's about 900 lines
+          of CSS and 200 of JavaScript.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#plans">See the plans</a>
+          <a class="btn btn-ghost btn-lg" href="https://github.com/abhinavshahi27" target="_blank" rel="noopener noreferrer">
+            View the source
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-top">
+        <a class="brand" href="#top" aria-label="Streamly home">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brand-grad-foot" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent)" />
+                <stop offset="1" stop-color="var(--accent-2)" />
+              </linearGradient>
+            </defs>
+            <g fill="url(#brand-grad-foot)">
+              <rect x="13" y="30" width="7" height="14" rx="3.5" />
+              <rect x="24" y="22" width="7" height="22" rx="3.5" />
+              <rect x="35" y="14" width="7" height="30" rx="3.5" />
+              <path d="M42 30.6a1.8 1.8 0 0 1 2.7-1.56l8.1 4.7a1.8 1.8 0 0 1 0 3.12l-8.1 4.7A1.8 1.8 0 0 1 42 40V30.6Z" />
+            </g>
+          </svg>
+          <span class="brand-word">Streamly</span>
+        </a>
+        <p class="footer-tag">A front-end portfolio project by Abhinav Shahi.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-col">
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#plans">Plans</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Project</h2>
+          <ul>
+            <li><a href="https://github.com/abhinavshahi27" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="#features">Tech stack</a></li>
+            <li><a href="#faq">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Built with</h2>
+          <ul>
+            <li><span>Semantic HTML</span></li>
+            <li><span>CSS Grid &amp; custom properties</span></li>
+            <li><span>Vanilla ES modules</span></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> Streamly — a fictional brand created for this demo. Not a real service.
+          No affiliation with any existing streaming company; no data is collected, stored or transmitted.</p>
+        <p>Released under the MIT licence.</p>
+      </div>
     </div>
+  </footer>
 
-    <div class="seperation"></div>
-
-    <section class="first">
-        <div class="txt1">
-            <span>
-                Enjoy on your TV
-            </span>
-            <span>
-                Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.
-            </span>
-        </div>
-        <div class="sec-img">
-            <img src="Assets/images/tv.png" alt="">
-            <video src="Assets/videos/video-tv-in-0819.m4v" autoplay loop muted></video>
-        </div>
-    </section>
-    <div class="seperation"></div>
-
-    <section class="first second">
-        <div class="sec-img">
-            <img src="Assets/images/mobile-0819.jpg" alt="">
-        </div>
-
-        <div class="txt1">
-            <span>
-                Download your shows to watch offline
-            </span>
-            <span>
-                Save your favourites easily and always have something to watch.
-            </span>
-        </div>
-    </section>
-    <div class="seperation"></div>
-
-    <section class="first third">
-        <div class="txt1">
-            <span>
-                Watch everywhere
-            </span>
-            <span>
-                Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.
-            </span>
-        </div>
-        <div class="sec-img">
-            <img src="Assets/images/device-pile-in.png" alt="">
-            <video src="Assets/videos/vid1.m4v" autoplay loop muted></video>
-        </div>
-    </section>
-    <div class="seperation"></div>
-
-    <section class="first fourth">
-        <div class="sec-img">
-            <img src="Assets/images/kids.png" alt="">
-        </div>
-
-        <div class="txt1">
-            <span>
-                Create profiles for kids
-            </span>
-            <span>
-                Send children on adventures with their favourite characters in a space made just for them—free with your
-                membership.
-            </span>
-        </div>
-    </section>
-    <div class="seperation"></div>
-
-    <section class="faq">
-        <h2>Frequently Asked Questions</h2>
-
-        <div class="faq-box">
-            <span>What is Netflix?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                fill="none">
-                <path d="M12 4V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </div>
-
-        <div class="faq-box">
-            <span>How much does Netflix cost?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                fill="none">
-                <path d="M12 4V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </div>
-
-        <div class="faq-box">
-            <span>Where can I watch?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                fill="none">
-                <path d="M12 4V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </div>
-
-        <div class="faq-box">
-            <span>how do I cancle?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                fill="none">
-                <path d="M12 4V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </div>
-
-        <div class="faq-box">
-            <span>What can I watch on Netflix?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                fill="none">
-                <path d="M12 4V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </div>
-
-        <div class="faq-box">
-            <span>Is Netflix good for kids?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                fill="none">
-                <path d="M12 4V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M4 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </div>
-    </section>
-    <div class="seperation"></div>
-
-    <footer>
-        <p>Questions? Call 000-800-919-1694</p>
-
-        <div class="foot-items">
-            <a href="">FAQ</a>
-            <a href="">Help Centre</a>
-            <a href="">Account</a>
-            <a href="">Media Centre</a>
-            <a href="">Investor Relations</a>
-            <a href=""> Jobs</a>
-            <a href="">Ways to Watch</a>
-            <a href="">Terms of Use</a>
-            <a href=""> Privacy</a>
-            <a href="">Cookie Preferences</a>
-            <a href="">Corporate Information</a>
-            <a href="">Contact Us</a>
-            <a href="">Speed Test</a>
-            <a href="">Legal Notices</a>
-            <a href=""> Only on NetflixFAQ</a>
-        </div>
-
-        <div class="lang-btn">
-            <button class="btn btn-lang">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                    fill="none">
-                    <path
-                        d="M7 8.37931H11.5M17 8.37931H14.5M11.5 8.37931H14.5M11.5 8.37931V7M14.5 8.37931C13.9725 10.2656 12.8679 12.0487 11.6071 13.6158M8.39286 17C9.41205 16.0628 10.5631 14.9134 11.6071 13.6158M11.6071 13.6158C10.9643 12.8621 10.0643 11.6426 9.80714 11.0909M11.6071 13.6158L13.5357 15.6207"
-                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path
-                        d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z"
-                        stroke="currentColor" stroke-width="1.5" />
-                </svg>
-
-                English
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
-                    fill="none">
-                    <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="currentColor"
-                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-
-        <p>Netflix India</p>
-        <p>Unofficial educational UI clone. Not affiliated with or endorsed by Netflix, Inc.
-            All Netflix trademarks and brand assets belong to their respective owners. No data is collected on this
-            page.</p>
-    </footer>
-
-    <div class="seperation"></div>
-
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 
 </html>
