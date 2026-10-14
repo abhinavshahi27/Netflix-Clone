@@ -1,0 +1,15 @@
+{
+  "name": "streamly",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Streamly — an original, dependency-free streaming landing page built with semantic HTML, modern CSS and vanilla JavaScript.",
+  "type": "module",
+  "scripts": {
+    "start": "node tools/dev-server.mjs",
+    "dev": "node tools/dev-server.mjs",
+    "serve:python": "python3 -m http.server 5173"
+  },
+  "keywords": ["landing-page", "vanilla-js", "css-grid", "accessibility", "no-build"],
+  "author": "Abhinav Shahi",
+  "license": "MIT"
+}
