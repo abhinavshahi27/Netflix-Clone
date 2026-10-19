@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>404 — Streamly</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        background: #08080e;
+        color: #f4f4f8;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          Arial,
+          sans-serif;
+        text-align: center;
+      }
+      .mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-weight: 800;
+        font-size: 1.5rem;
+      }
+      .mark svg {
+        width: 34px;
+        height: 34px;
+      }
+      h1 {
+        font-size: clamp(2.4rem, 8vw, 4rem);
+        letter-spacing: -0.03em;
+        margin-top: 1rem;
+      }
+      p {
+        color: #a2a2b8;
+        max-width: 46ch;
+        margin: 0.8rem auto 1.6rem;
+        line-height: 1.6;
+      }
+      a {
+        display: inline-block;
+        padding: 0.75em 1.6em;
+        border-radius: 999px;
+        background-image: linear-gradient(120deg, #8b5cf6, #22d3ee);
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      a:focus-visible {
+        outline: 2px solid #22d3ee;
+        outline-offset: 3px;
+      }
+      code {
+        color: #22d3ee;
+        font-family: ui-monospace, Menlo, Consolas, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8b5cf6" />
+              <stop offset="1" stop-color="#22d3ee" />
+            </linearGradient>
+          </defs>
+          <g fill="url(#g)">
+            <rect x="13" y="30" width="7" height="14" rx="3.5" />
+            <rect x="24" y="22" width="7" height="22" rx="3.5" />
+            <rect x="35" y="14" width="7" height="30" rx="3.5" />
+            <path
+              d="M42 30.6a1.8 1.8 0 0 1 2.7-1.56l8.1 4.7a1.8 1.8 0 0 1 0 3.12l-8.1 4.7A1.8 1.8 0 0 1 42 40V30.6Z"
+            />
+          </g>
+        </svg>
+        Streamly
+      </span>
+      <h1>Lost the signal</h1>
+      <p>
+        That page doesn't exist — the URL may have moved when the project was rebranded. Nothing is
+        broken; the whole site lives on one page.
+      </p>
+      <p><a href="/">Back to Streamly</a></p>
+    </div>
+  </body>
+</html>

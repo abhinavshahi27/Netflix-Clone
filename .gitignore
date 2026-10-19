@@ -3,3 +3,10 @@ node_modules/
 *.log
 .vscode/
 .idea/
+.env
+.env.*
+*.local
+.codegraph/
+coverage/
+test-results/
+playwright-report/

@@ -1,0 +1,58 @@
+[
+  {
+    "file": "assets/img/vault/vault-3.webp",
+    "title": "File:Nosferatu title.jpg",
+    "query": "Nosferatu 1922 vampire",
+    "licence": "Public domain",
+    "artist": "Jofa-Atelier Berlin-Johannisthal, Prana-Film GmbH",
+    "source": "https://commons.wikimedia.org/wiki/File:Nosferatu_title.jpg"
+  },
+  {
+    "file": "assets/img/vault/vault-2.webp",
+    "title": "File:Boris Bilinski (1900-1948) Plakat für den Film Metropolis (1).jpg",
+    "query": "Metropolis 1927 film poster",
+    "licence": "Public domain",
+    "artist": "Boris Bilinsky",
+    "source": "https://commons.wikimedia.org/wiki/File:Boris_Bilinski_(1900-1948)_Plakat_f%C3%BCr_den_Film_Metropolis_(1).jpg"
+  },
+  {
+    "file": "assets/img/vault/vault-1.webp",
+    "title": "File:1920 Erich Ludwig Stahl und Otto Arpke Plakat-Variante zum Horrorfilm \"Das Cabinet des Dr. Caligari\", DECLA.jpg",
+    "query": "Cabinet of Dr Caligari 1920 poster",
+    "licence": "Public domain",
+    "artist": "Design: Erich Ludwig Stahl and Otto Arpke",
+    "source": "https://commons.wikimedia.org/wiki/File:1920_Erich_Ludwig_Stahl_und_Otto_Arpke_Plakat-Variante_zum_Horrorfilm_%22Das_Cabinet_des_Dr._Caligari%22,_DECLA.jpg"
+  },
+  {
+    "file": "assets/img/vault/vault-4.webp",
+    "title": "File:Silent film theater in Sherlock Jr., 1924, with Buster Keaton.png",
+    "query": "Buster Keaton Sherlock Jr 1924 still",
+    "licence": "Public domain",
+    "artist": "Unknown photographerUnknown photographer",
+    "source": "https://commons.wikimedia.org/wiki/File:Silent_film_theater_in_Sherlock_Jr.,_1924,_with_Buster_Keaton.png"
+  },
+  {
+    "file": "assets/img/photos/photo-fog.webp",
+    "title": "File:Fog Shrouded Valley North Of Hanmer Springs.jpg",
+    "query": "fog forest valley",
+    "licence": "Public domain",
+    "artist": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Fog_Shrouded_Valley_North_Of_Hanmer_Springs.jpg"
+  },
+  {
+    "file": "assets/img/photos/photo-dunes.webp",
+    "title": "File:Mosca Creek, Great Sand Dunes National Preserve (33183095041).jpg",
+    "query": "Great Sand Dunes evening",
+    "licence": "Public domain",
+    "artist": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Mosca_Creek,_Great_Sand_Dunes_National_Preserve_(33183095041).jpg"
+  },
+  {
+    "file": "assets/img/photos/photo-neon.webp",
+    "title": "File:Boulevard Hotel (Neon sign), Miami Beach.jpg",
+    "query": "night street neon signs",
+    "licence": "Public domain",
+    "artist": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Boulevard_Hotel_(Neon_sign),_Miami_Beach.jpg"
+  }
+]

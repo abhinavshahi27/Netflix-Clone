@@ -1,0 +1,30 @@
+{
+  "name": "Streamly",
+  "short_name": "Streamly",
+  "description": "A fictional streaming service — an original front-end portfolio project.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#08080e",
+  "theme_color": "#08080e",
+  "icons": [
+    {
+      "src": "assets/brand/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/brand/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

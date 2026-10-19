@@ -1,15 +1,48 @@
 {
   "name": "streamly",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Streamly — an original, dependency-free streaming landing page built with semantic HTML, modern CSS and vanilla JavaScript.",
   "type": "module",
   "scripts": {
     "start": "node tools/dev-server.mjs",
     "dev": "node tools/dev-server.mjs",
-    "serve:python": "python3 -m http.server 5173"
+    "serve:python": "python3 -m http.server 5173",
+    "lint": "eslint . && stylelint \"assets/css/**/*.css\" && prettier --check .",
+    "lint:fix": "eslint . --fix && stylelint \"assets/css/**/*.css\" --fix && prettier --write .",
+    "validate": "html-validate index.html 404.html",
+    "test": "playwright test",
+    "check:csp": "node tools/csp-hash.mjs --check",
+    "assets": "swift tools/generate-assets.swift"
   },
-  "keywords": ["landing-page", "vanilla-js", "css-grid", "accessibility", "no-build"],
+  "keywords": [
+    "landing-page",
+    "vanilla-js",
+    "css-grid",
+    "accessibility",
+    "no-build"
+  ],
   "author": "Abhinav Shahi",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinavshahi27/Netflix-Clone.git"
+  },
+  "homepage": "https://abhinavshahi27.github.io/Netflix-Clone/",
+  "bugs": "https://github.com/abhinavshahi27/Netflix-Clone/issues",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "html-validate": "^11.16.4",
+    "linkinator": "^8.1.0",
+    "prettier": "^3.9.10",
+    "sharp": "^0.35.5",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
 }

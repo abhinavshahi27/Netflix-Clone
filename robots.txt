@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://abhinavshahi27.github.io/Netflix-Clone/sitemap.xml

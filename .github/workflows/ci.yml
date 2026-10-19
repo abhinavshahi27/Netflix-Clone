@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint & validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run validate
+      - name: CSP hash in sync with the inline bootstrap
+        run: node tools/csp-hash.mjs --check
+
+  test:
+    name: Playwright smoke tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+
+  lighthouse:
+    name: Lighthouse budgets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: lighthouserc.json
+          uploadArtifacts: true
+
+  links:
+    name: Check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Start dev server
+        run: node tools/dev-server.mjs 4173 &
+      - run: npx wait-on http://127.0.0.1:4173 --timeout 15000
+      # the github.io / github.com targets are checked post-deploy, not in CI
+      - run: npx linkinator http://127.0.0.1:4173 --recurse --skip "github\.com|github\.io"

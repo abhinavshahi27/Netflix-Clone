@@ -1,0 +1,11 @@
+node_modules/
+package-lock.json
+test-results/
+playwright-report/
+coverage/
+assets/brand/*.png
+*.svg
+google78f9c00f0f9b624f.html
+_headers
+
+assets/img/credits.json
